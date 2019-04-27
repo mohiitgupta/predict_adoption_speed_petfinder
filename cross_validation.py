@@ -89,33 +89,33 @@ title = "Learning Curves"
 n_jobs=-1
 dtree_clf = tree.DecisionTreeClassifier(max_depth=5, min_samples_leaf=10)
 svm_clf = SVC(gamma='auto')
-nn_clf = MLPClassifier(solver='adam', alpha=1e-5, hidden_layer_sizes=(1500, 500), random_state=1)
+nn_clf = MLPClassifier(early_stopping=True, solver='adam', alpha=1e-5, hidden_layer_sizes=(1500, 500), random_state=1, verbose = True)
 
 
 # In[ ]:
 
 
-cv = ShuffleSplit(n_splits=5, test_size=0.3, random_state=0)
-plot_learning_curve(dtree_clf, title, train_features_matrix, train_label_matrix, cv=cv, n_jobs=n_jobs, fig_name='cross_validation_learning_curve_dtree')
+# cv = ShuffleSplit(n_splits=5, test_size=0.3, random_state=0)
+# plot_learning_curve(dtree_clf, title, train_features_matrix, train_label_matrix, cv=cv, n_jobs=n_jobs, fig_name='cross_validation_learning_curve_dtree')
 
-# title = r"Learning Curves (SVM, RBF kernel, $\gamma=0.001$)"
-# # SVC is more expensive so we do a lower number of CV iterations:
-# cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
-# estimator = SVC(gamma=0.001)
-# plot_learning_curve(estimator, title, X, y, (0.7, 1.01), cv=cv, n_jobs=4)
+# # title = r"Learning Curves (SVM, RBF kernel, $\gamma=0.001$)"
+# # # SVC is more expensive so we do a lower number of CV iterations:
+# # cv = ShuffleSplit(n_splits=10, test_size=0.2, random_state=0)
+# # estimator = SVC(gamma=0.001)
+# # plot_learning_curve(estimator, title, X, y, (0.7, 1.01), cv=cv, n_jobs=4)
 
-# plt.show()
-plt.close()
+# # plt.show()
+# plt.close()
 
 
 # In[ ]:
 
 
-cv = ShuffleSplit(n_splits=5, test_size=0.3, random_state=0)
-plot_learning_curve(svm_clf, title, train_features_matrix, train_label_matrix,
-                    cv=cv, n_jobs=n_jobs, fig_name='cross_validation_learning_curve_svm')
-# plt.show()
-plt.close()
+# cv = ShuffleSplit(n_splits=5, test_size=0.3, random_state=0)
+# plot_learning_curve(svm_clf, title, train_features_matrix, train_label_matrix,
+#                     cv=cv, n_jobs=n_jobs, fig_name='cross_validation_learning_curve_svm')
+# # plt.show()
+# plt.close()
 
 
 # In[ ]:
